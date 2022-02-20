@@ -2,67 +2,21 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+    <title>Rock, paper, scissors!</title>
 </head>
 <body>
-    <script>
-
-        symbols = ["ROCK", "PAPER", "SCISSORS"]
-
-        function computerPlay() {
-            return symbols[Math.floor(Math.random() * 3)]
-        }
-
-        function playerPlay() {
-            return prompt("What symbol do you choose?");
-        }
-
-        let playerScore = 0;
-        let computerScore = 0;
-
-        function playRound(computerSelection=computerPlay(), playerSelection=playerPlay()) {
-            
-            switch(playerSelection.toUpperCase()) {
-                case "ROCK":
-                if (computerSelection === "ROCK") {
-                    return "Rock vs Rock. Tie.";
-                } else if (computerSelection === "PAPER") {
-                    computerScore++
-                    return "Rock vs Paper. You lose!"
-                } else {
-                    playerScore++
-                    return "Rock vs Scissors. You win!";
-                }
-                case "PAPER":
-                if (computerSelection === "ROCK") {
-                    playerScore++
-                    return "Paper vs Rock. You win!";
-                } else if (computerSelection === "PAPER") {
-                    return "Paper vs Paper. Tie.";    
-                } else {
-                    computerScore++
-                    return "Paper vs Scissors. You lose!";    
-                }
-                case "SCISSORS":
-                if (computerSelection === "ROCK") {
-                    computerScore++ 
-                    return "Scissors vs Rock. You lose!";   
-                } else if (computerSelection === "PAPER") {
-                    playerScore++
-                    return "Scissors vs Paper. You win!";    
-                } else {
-                    return "Scissors vs Scissors. Tie.";    
-                }
-            }
-        }
-
-        function game() {
-            for (let i = 0; i < 5; i++) {
-                console.log(playRound())
-            }
-            alert(`Score: \n Player: ${playerScore} \n Computer: ${computerScore}`)
-            alert(`${playerScore > computerScore ? "You win the game." : "You lose the game"}`)
-        }
-    </script>
+    <div id="container">
+        <p id="announcer">Rock, paper, scissors!</p>
+        <p id="score">Score (Player - PC): 0 - 0</p>
+        <button id="rock" value="ROCK" type="button">Rock</button>
+        <button id="paper" value="PAPER" type="button">Paper</button>
+        <button id="scissors" value="SCISSORS" type="button">Scissors</button>
+        <p id="winner"></p>
+    </div>
+    <div id="reset" class="hidden">
+        <button id="restart" type="button">Reset</button>
+        <p>Restart game to continue.</p>
 </body>
 </html>
